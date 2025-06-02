@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preston Brown Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+    header, section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    h1, h2 {
+      color: #fff;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img, .card video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .card h3 {
+      margin: 0;
+      padding: 1rem;
+      font-size: 1.25rem;
+      background: #111;
+      color: #fff;
+    }
+    .contact {
+      background-color: #111;
+      padding: 4rem 2rem;
+    }
+    .contact p {
+      font-size: 1.2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0a0a0a;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Preston Brown</h1>
+    <p>Game Programmer & Technical Designer</p>
+  </header>
+
+  <section>
+    <h2>Games</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="Deadly_Title.png" alt="Deadly Daycare">
+        <h3>Deadly Daycare</h3>
+      </div>
+      <div class="card">
+        <img src="Breakout_Title.png" alt="8th Century Breakout">
+        <h3>8th Century Breakout</h3>
+      </div>
+      <div class="card">
+        <img src="Maiden_Title.jpg" alt="Maiden">
+        <h3>Maiden</h3>
+      </div>
+      <div class="card">
+        <img src="Headlights_Title.png" alt="Headlights">
+        <h3>Headlights</h3>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="AI_Title.gif" alt="AI Project">
+        <h3>AI Demonstrations</h3>
+      </div>
+      <div class="card">
+        <img src="ComputerGraphics_Title.png" alt="Computer Graphics">
+        <h3>Computer Graphics Demos</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:preston.brown@astralwolfstudios.com" style="color:#1e90ff;">preston.brown@astralwolfstudios.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Preston Brown. All rights reserved.</p>
+  </footer>
+</body>
+</html>
