@@ -87,7 +87,7 @@
             }
 
             .expanded-section.active {
-                max-height: 2000px;
+                max-height: 5000px;
                 opacity: 1;
                 padding: 2rem;
                 margin-top: 2rem;
@@ -498,14 +498,152 @@
 
         <div id="ai" class="expanded-section">
             <h3>Artificial Intelligence</h3>
-            <p>Coming soon: Details on AI demos and strategies.</p>
+            <p>
+                This section showcases different AI concepts implemented through
+                interactive visualizations and projects.
+            </p>
+
+            <h4>1. Search Algorithms</h4>
+            <ul>
+                <li><strong>Depth First Search</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_DFS.gif" alt="Depth First Search" />
+            </div>
+            <ul>
+                <li><strong>Breadth First Search</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_BFS.gif" alt="Breadth First Search" />
+            </div>
+            <ul>
+                <li><strong>Uniform Cost Search</strong></li>
+            </ul>
+            <div class="media-container">
+                <img
+                    src="assets/AI_UCS1.gif"
+                    alt="Uniform Cost Search Example 1"
+                />
+                <img
+                    src="assets/AI_UCS2.gif"
+                    alt="Uniform Cost Search Example 2"
+                />
+            </div>
+            <ul>
+                <li><strong>A*</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_Astar1.gif" alt="A* Example 1" />
+                <img src="assets/AI_Astar2.gif" alt="A* Example 2" />
+            </div>
+
+            <h4>2. Multi-Agents</h4>
+            <ul>
+                <li><strong>Reflex Agent</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_Reflex1.gif" alt="Reflex Agent 1" />
+                <img src="assets/AI_Reflex2.gif" alt="Reflex Agent 2" />
+            </div>
+            <ul>
+                <li><strong>Minimax Agent</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_Minimax.gif" alt="Minimax Agent" />
+            </div>
+            <ul>
+                <li><strong>Expectimax Agent</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_Expectimax1.gif" alt="Expectimax Agent 1" />
+                <img src="assets/AI_Expectimax2.gif" alt="Expectimax Agent 2" />
+            </div>
+
+            <h4>3. Reinforcement Learning</h4>
+            <ul>
+                <li><strong>Value Iteration</strong></li>
+            </ul>
+            <div class="media-container">
+                <img
+                    src="assets/AI_ValueIteration100.gif"
+                    alt="Value Iteration"
+                />
+            </div>
+            <ul>
+                <li><strong>Q-Learning</strong></li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/AI_QlearningEx.gif" alt="Q-Learning Example" />
+                <img
+                    src="assets/AI_QlearningPacMan.gif"
+                    alt="Q-Learning PacMan"
+                />
+            </div>
+            <div class="media-container">
+                <img
+                    src="assets/AI_CrawlerBQ.gif"
+                    alt="Q-Learning Crawler Before"
+                />
+                <img
+                    src="assets/AI_CrawlerAQ.gif"
+                    alt="Q-Learning Crawler After"
+                />
+            </div>
         </div>
+
         <div id="graphics" class="expanded-section">
             <h3>Computer Graphics</h3>
             <p>
-                Coming soon: Physics-based animation, ray tracing, and 3D mesh
-                rendering demos.
+                Using GLSL, JavaScript and HTML I implemented three separate
+                programs that demonstrate real-time 3D rendering, animation, and
+                raytracing techniques on triangular meshes.
             </p>
+
+            <ul>
+                <li>
+                    <strong>Rendering 3D Meshes:</strong> Displays textured and
+                    shaded 3D triangular models using GLSL.
+                </li>
+            </ul>
+            <div class="media-container">
+                <video
+                    src="assets/ComputerGraphics_Rendering3DMeshes.mp4"
+                    autoplay
+                    muted
+                    loop
+                ></video>
+            </div>
+
+            <ul>
+                <li>
+                    <strong>Physics-based Animation:</strong> Simulates movement
+                    using a mass spring system to model physical interactions.
+                </li>
+            </ul>
+            <div class="media-container">
+                <video
+                    src="assets/ComputerGraphics_PhysicsBasedAnimation.mp4"
+                    autoplay
+                    muted
+                    loop
+                ></video>
+            </div>
+
+            <ul>
+                <li>
+                    <strong>Raytracing:</strong> Renders realistic lighting
+                    effects and shadows by simulating rays of light intersecting
+                    3D surfaces.
+                </li>
+            </ul>
+            <div class="media-container">
+                <video
+                    src="assets/ComputerGraphics_Raytracing.mp4"
+                    autoplay
+                    muted
+                    loop
+                ></video>
+            </div>
         </div>
 
         <section class="contact">
