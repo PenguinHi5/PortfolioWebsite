@@ -1,124 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Preston Brown Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #0d0d0d;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      scroll-behavior: smooth;
-    }
-    header, section {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    h1, h2 {
-      color: #fff;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-    }
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.05);
-    }
-    .card img, .card video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .card h3 {
-      margin: 0;
-      padding: 1rem;
-      font-size: 1.25rem;
-      background: #111;
-      color: #fff;
-    }
-    .contact {
-      background-color: #111;
-      padding: 4rem 2rem;
-    }
-    .contact p {
-      font-size: 1.2rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0a0a0a;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Preston Brown</h1>
-    <p>Game Programmer & Technical Designer</p>
-  </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Preston Brown Portfolio</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #0d0d0d;
+                color: #f0f0f0;
+                scroll-behavior: smooth;
+            }
 
-  <section>
-    <h2>Games</h2>
-    <div class="gallery">
-      <div class="card">
-        <img src="assets/Deadly_Title.png" alt="Deadly Daycare">
-        <h3>Deadly Daycare</h3>
-      </div>
-      <div class="card">
-        <img src="assets/Breakout_Title.png" alt="8th Century Breakout">
-        <h3>8th Century Breakout</h3>
-      </div>
-      <div class="card">
-        <img src="assets/Maiden_Title.jpg" alt="Maiden">
-        <h3>Maiden</h3>
-      </div>
-      <div class="card">
-        <img src="assets/Headlights_Title.png" alt="Headlights">
-        <h3>Headlights</h3>
-      </div>
-    </div>
-  </section>
+            header {
+                background-color: #121212;
+                padding: 2rem;
+                text-align: center;
+                font-size: 2.5rem;
+                font-weight: bold;
+                border-bottom: 2px solid #333;
+            }
 
-  <section>
-    <h2>Projects</h2>
-    <div class="gallery">
-      <div class="card">
-        <img src="assets/AI_Title.gif" alt="AI Project">
-        <h3>AI Demonstrations</h3>
-      </div>
-      <div class="card">
-        <img src="assets/ComputerGraphics_Title.png" alt="Computer Graphics">
-        <h3>Computer Graphics Demos</h3>
-      </div>
-    </div>
-  </section>
+            section {
+                padding: 2rem;
+                max-width: 1000px;
+                margin: auto;
+            }
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:preston.brown@astralwolfstudios.com" style="color:#1e90ff;">preston.brown@astralwolfstudios.com</a></p>
-  </section>
+            h2 {
+                border-bottom: 1px solid #444;
+                padding-bottom: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
 
-  <footer>
-    <p>&copy; 2025 Preston Brown. All rights reserved.</p>
-  </footer>
-</body>
+            .grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .card {
+                background-color: #1a1a1a;
+                border: 1px solid #333;
+                border-radius: 8px;
+                overflow: hidden;
+                width: 300px;
+                text-align: center;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+            }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+            .card img,
+            .card video {
+                width: 100%;
+                height: 260px;
+                object-fit: cover;
+                display: block;
+            }
+
+            .card-title {
+                padding: 0.5rem;
+                font-weight: bold;
+                font-size: 1.1rem;
+                color: #fff;
+            }
+
+            .expanded-section {
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height 0.6s ease, opacity 0.6s ease,
+                    padding 0.6s ease;
+                opacity: 0;
+                width: 100%;
+                max-width: 1000px;
+                margin: 0 auto;
+                background-color: #1c1c1c;
+                padding: 0 2rem;
+                border-radius: 10px;
+                border: 1px solid #333;
+            }
+
+            .expanded-section.active {
+                max-height: 2000px;
+                opacity: 1;
+                padding: 2rem;
+                margin-top: 2rem;
+            }
+
+            .expanded-section h3 {
+                color: #00bfff;
+                font-size: 1.6rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .expanded-section p,
+            .expanded-section ul {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .expanded-section strong {
+                color: #00bfff;
+            }
+
+            .expanded-section h4 {
+                font-size: 1.3rem;
+                margin-top: 1.5rem;
+                color: #00bfff;
+            }
+
+            .media-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .media-container img,
+            .media-container video {
+                max-width: 48%;
+                border-radius: 8px;
+            }
+
+            .links {
+                margin-top: 1.5rem;
+            }
+
+            .links a {
+                color: #00bfff;
+                text-decoration: none;
+                margin-right: 1.2rem;
+                font-size: 1rem;
+            }
+
+            .contact {
+                text-align: center;
+                margin-top: 3rem;
+            }
+
+            .contact a {
+                color: #00bfff;
+                text-decoration: none;
+                font-size: 1.2rem;
+            }
+        </style>
+        <script>
+            function toggleSection(id) {
+              const sections = document.querySelectorAll('.expanded-section');
+              sections.forEach(section => {
+                if (section.id === id) {
+                  section.classList.toggle('active');
+                } else {
+                  section.classList.remove('active');
+                }
+              });
+
+              const selected = document.getElementById(id);
+              if (selected.classList.contains('active')) {
+                selected.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }
+        </script>
+    </head>
+
+    <body>
+        <header>Preston Brown Portfolio</header>
+
+        <section>
+            <h2>Games</h2>
+            <div class="grid">
+                <div class="card" onclick="toggleSection('deadly')">
+                    <img src="assets/Deadly_Title.png" alt="Deadly Daycare" />
+                    <div class="card-title">Deadly Daycare</div>
+                </div>
+                <div class="card" onclick="toggleSection('breakout')">
+                    <img
+                        src="assets/Breakout_Title.png"
+                        alt="8th Century Breakout"
+                    />
+                    <div class="card-title">8th Century Breakout</div>
+                </div>
+                <div class="card" onclick="toggleSection('maiden')">
+                    <img src="assets/Maiden_Title.jpg" alt="Maiden Game" />
+                    <div class="card-title">Maiden</div>
+                </div>
+                <div class="card" onclick="toggleSection('headlights')">
+                    <img src="assets/Headlights_Title.png" alt="Headlights" />
+                    <div class="card-title">Headlights</div>
+                </div>
+            </div>
+        </section>
+
+        <div id="deadly" class="expanded-section">
+            <h3>
+                Deadly Daycare VR
+                <span style="font-weight: normal; font-style: italic"
+                    >(May 2021)</span
+                >
+            </h3>
+            <p><strong>Role:</strong> Gameplay Programmer</p>
+            <h4>Description</h4>
+            <p>
+                Using virtual reality, immerse yourself into a toon-styled
+                daycare! With weird and wacky elements, embark on a fantastic
+                experience with adorable-yet-monstrous creatures!<br />
+                Given a bestiary as a guide, explore the daycare for tools and
+                toys required to appease your whimsical wards. From normal
+                objectives like feeding and bathing, to outlandish tasks like
+                rituals and witchcraft, every chaotic creature will have unique
+                demands, attitudes, sizes, and challenges.<br />
+                As their caretaker, your main goal is to keep the creatures
+                happy. Unfortunately, this is easier said than done, as they
+                don’t always play nice. These creatures are dangerous, and if
+                you can’t keep up with their demands, you may have to pay the
+                ultimate price...<br /><br />
+                Deadly Daycare VR is a virtual reality experience created in
+                Unity as a capstone project by a group of 12 students from the
+                University of Utah where I was one of three engineers.
+            </p>
+            <h4>My Contributions</h4>
+            <ul>
+                <li>
+                    Implemented all features of the floating bestiary book
+                    (movement, animations, UI, and interaction with laser/hand).
+                </li>
+                <li>
+                    Built the bathing system including scrubbing, rinsing,
+                    drying mechanics, particle collisions, material state
+                    transitions.
+                </li>
+                <li>
+                    Developed ritual systems including the cauldron, candle
+                    ignition chaining, toy summoning logic, and fire
+                    extinguisher behavior.
+                </li>
+                <li>
+                    Created flexible gameplay systems supporting modular
+                    activities.
+                </li>
+            </ul>
+            <div class="links">
+                <a href="https://deadlydaycare.carrd.co/" target="_blank"
+                    >Website</a
+                >
+                <a
+                    href="https://littlechair.itch.io/deadly-daycare-vr"
+                    target="_blank"
+                    >Itch.io</a
+                >
+                <a
+                    href="https://store.steampowered.com/app/1561560/Deadly_Daycare_VR/"
+                    target="_blank"
+                    >Steam</a
+                >
+            </div>
+            <div class="media-container">
+                <img
+                    src="assets/Deadly_Bestiary.png"
+                    alt="Bestiary Screenshot"
+                />
+                <img src="assets/Deadly_Bathing.gif" alt="Bathing Shubby" />
+            </div>
+            <div class="media-container">
+                <iframe
+                    width="100%"
+                    height="315"
+                    src="https://www.youtube.com/embed/HHoGgK3EsLU"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+
+        <div id="breakout" class="expanded-section">
+            <h3>
+                8th Century Breakout
+                <span style="font-weight: normal; font-style: italic"
+                    >(May 2020)</span
+                >
+            </h3>
+            <p><strong>Role:</strong> Gameplay Programmer</p>
+            <h4>Description</h4>
+            <p>
+                After sneaking into the viking museum late at night you fall
+                through a trapdoor and find yourself stuck in a locked room.
+                With the help of the displays surrounding you and your brother,
+                Mel, you will have to solve some tricky puzzles in order to
+                escape.
+            </p>
+            <p>
+                8th Century Breakout is a 2D escape game created in GameMaker by
+                a group of 4 students from the University of Utah for the
+                Serious Game Development course where I was one of two
+                engineers.
+            </p>
+            <h4>My Contributions</h4>
+            <ul>
+                <li>
+                    Coded the gameplay systems for the lock, rune, and tile
+                    puzzles:
+                    <ul>
+                        <li>Allowed puzzles to accept multiple solutions</li>
+                        <li>Rune tile pairing and decoding system</li>
+                        <li>
+                            Particles, animations, and sprite effects for puzzle
+                            feedback
+                        </li>
+                        <li>
+                            Tracked and preserved puzzle state between rooms
+                        </li>
+                    </ul>
+                </li>
+                <li>Implemented all in-game animations</li>
+                <li>Built room transition and object zoom systems</li>
+            </ul>
+            <div class="links">
+                <a
+                    href="https://brownpre000.itch.io/8th-century-breakout"
+                    target="_blank"
+                    >Itch.io</a
+                >
+            </div>
+            <div class="media-container">
+                <img
+                    src="assets/Breakout_WalkieTalkie.png"
+                    alt="Walkie Talkie"
+                />
+                <img src="assets/Breakout_Room.png" alt="Museum Room" />
+                <img src="assets/Breakout_Coins.png" alt="Coin Display" />
+                <img src="assets/Breakout_Lock.png" alt="Lock Puzzle" />
+                <img src="assets/Breakout_RunePuzzle.png" alt="Rune Puzzle" />
+                <img src="assets/Breakout_RuneDisplay.png" alt="Rune Display" />
+            </div>
+        </div>
+
+        <div id="maiden" class="expanded-section">
+            <h3>
+                Iron Maiden
+                <span style="font-weight: normal; font-style: italic"
+                    >(Dec 2019)</span
+                >
+            </h3>
+            <p><strong>Role:</strong> Gameplay Programmer</p>
+            <h4>Description</h4>
+            <p>
+                Iron Maiden is a 2D action platformer all about earning your
+                hero stripes. You’ll have a lot to learn and a lot to prove as
+                you fight the corrupted forces of nature in a quest to save the
+                world! You go from random zero to legendary hero, as you unlock
+                the full power of the Iron Maiden to fight, jump and fly through
+                a world in peril!
+            </p>
+            <p>
+                Iron Maiden is a 2D Unity game created by a group of 6 students
+                at the University of Utah for the Traditional Game Development
+                course where I was one of two engineers.
+            </p>
+            <h4>My Contributions</h4>
+            <ul>
+                <li>
+                    Implemented the enemy AI:
+                    <ul>
+                        <li>Flying enemy - Dives towards the player</li>
+                        <li>
+                            Stationary enemy - Thrusts its vines out towards the
+                            player
+                        </li>
+                        <li>Turret enemy - Throws projectiles</li>
+                        <li>Rolling enemy - Rolls into the player</li>
+                        <li>
+                            Flower boss - Jumps on top of the player and
+                            performs a ballerina spin attack
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Implemented the combat system to feel accurate and reactive:
+                    <ul>
+                        <li>Light and heavy attacks</li>
+                        <li>Collisions</li>
+                        <li>Animations</li>
+                        <li>
+                            Game Feedback (Apply forces, Particles, Sounds,
+                            Sprite effects, etc.)
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Implemented modular assets such as moving platforms and
+                    falling hazards
+                </li>
+            </ul>
+            <div class="media-container">
+                <img src="assets/Maiden_Boss.gif" alt="Boss" />
+                <img src="assets/Maiden_Bush.gif" alt="Bush Enemy" />
+                <img src="assets/Maiden_Tree.gif" alt="Tree Enemy" />
+                <img src="assets/Maiden_Roll.gif" alt="Rolling Enemy" />
+                <img src="assets/Maiden_Bird.gif" alt="Bird Enemy" />
+            </div>
+            <div class="media-container">
+                <iframe
+                    width="100%"
+                    height="315"
+                    src="https://www.youtube.com/embed/gfzoYEkjlcE"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+
+        <div id="headlights" class="expanded-section">
+            <h3>
+                Headlights
+                <span style="font-weight: normal; font-style: italic"
+                    >(In development)</span
+                >
+            </h3>
+            <p><strong>Role:</strong> Project Lead / Software Engineer</p>
+            <h4>Description</h4>
+            <p>
+                Headlights is a relentless atmospheric horror experience where
+                isolation and fear collide on an empty, desolate road. Late at
+                night, miles from civilization, the only other vehicle on the
+                road suddenly veers into you—an intentional, violent crash. As
+                their twisted headlights spin back toward you, you realize this
+                isn’t an accident. It’s a hunt.<br /><br />
+                With your engine sputtering and adrenaline surging, you have no
+                choice but to outrun them. They won’t stop. If they catch you
+                again, they’ll ram into you over and over, crushing the cabin
+                around you until there’s nothing left. Your only hope is to keep
+                moving, keep your car alive, and survive until sunrise.<br /><br />
+                Can you last the night? Or will the darkness close in for
+                good?<br /><br />
+                This is a solo project I started in Fall 2024 primarily as a
+                portfolio piece.
+            </p>
+            <h4>My Contributions</h4>
+            <ul>
+                <li>
+                    Implemented new Unreal Engine 5 features such as Enhanced
+                    Input and MetaSounds.
+                </li>
+                <li>Developed the driving/crash functionality:</li>
+                <ul>
+                    <li>
+                        Utilized collision events to detect hits and performed a
+                        box trace to get the hit point.​
+                    </li>
+                    <li>
+                        Implemented several vehicles with unique handling and
+                        damage effects.
+                    </li>
+                </ul>
+                <li>
+                    Implemented animations, IK systems, IK retargeting between
+                    skeleton meshes, animation blueprints, and animation
+                    montages.
+                </li>
+                <li>
+                    Implemented the AI for the enemy car capable of patrolling,
+                    following and attacking the player and other pawns.
+                </li>
+                <li>
+                    Utilized a combination of C++ and Blueprints to build all of
+                    the gameplay systems.
+                </li>
+            </ul>
+            <div class="links">
+                <a href="https://astralwolfstudios.com" target="_blank"
+                    >Website</a
+                >
+            </div>
+        </div>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="card" onclick="toggleSection('ai')">
+                    <img src="assets/AI_Title.gif" alt="AI" />
+                    <div class="card-title">Artificial Intelligence</div>
+                </div>
+                <div class="card" onclick="toggleSection('graphics')">
+                    <img
+                        src="assets/ComputerGraphics_Title.png"
+                        alt="Computer Graphics"
+                    />
+                    <div class="card-title">Computer Graphics</div>
+                </div>
+            </div>
+        </section>
+
+        <div id="ai" class="expanded-section">
+            <h3>Artificial Intelligence</h3>
+            <p>Coming soon: Details on AI demos and strategies.</p>
+        </div>
+        <div id="graphics" class="expanded-section">
+            <h3>Computer Graphics</h3>
+            <p>
+                Coming soon: Physics-based animation, ray tracing, and 3D mesh
+                rendering demos.
+            </p>
+        </div>
+
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>
+                <a href="mailto:preston.brown@astralwolfstudios.com"
+                    >preston.brown@astralwolfstudios.com</a
+                >
+            </p>
+        </section>
+    </body>
 </html>
