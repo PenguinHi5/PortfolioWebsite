@@ -125,6 +125,8 @@
             .media-container img,
             .media-container video {
                 max-width: 48%;
+                max-height: 180px;
+                object-fit: cover;
                 border-radius: 8px;
             }
 
@@ -133,10 +135,20 @@
             }
 
             .links a {
-                color: #00bfff;
-                text-decoration: none;
-                margin-right: 1.2rem;
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                margin: 0.3rem 0.6rem 0.3rem 0;
                 font-size: 1rem;
+                font-weight: bold;
+                color: #0d0d0d;
+                background-color: #00bfff;
+                border-radius: 6px;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+
+            .links a:hover {
+                background-color: #009acd;
             }
 
             .contact {
@@ -504,33 +516,65 @@
             </p>
 
             <h4>1. Search Algorithms</h4>
+            <p>
+                I implemented various search algorithms to help Pacman navigate
+                through the different maps. The goal for all of the agents is to
+                eat all of the dots. (Note: All of the spaces that were visited
+                by the search algorithm are highlighted in pink. The brighter
+                pink, the earlier the space was visited.)
+            </p>
             <ul>
-                <li><strong>Depth First Search</strong></li>
+                <li>
+                    <strong>Depth First Search:</strong> In DFS, Pacman will
+                    explore the maze by going as far as it can in a particular
+                    direction before turning back to explore other paths. If a
+                    path to the goal exists, DFS will find it.
+                </li>
             </ul>
             <div class="media-container">
                 <img src="assets/AI_DFS.gif" alt="Depth First Search" />
             </div>
             <ul>
-                <li><strong>Breadth First Search</strong></li>
+                <li>
+                    <strong>Breadth First Search:</strong> In BFS, Pacman will
+                    explore the maze by visiting all its immediate neighbor
+                    spaces, then their neighbors, and so on until a path to the
+                    goal is found. This is slower than DFS, but will always find
+                    the shortest path to the goal.
+                </li>
             </ul>
             <div class="media-container">
                 <img src="assets/AI_BFS.gif" alt="Breadth First Search" />
             </div>
             <ul>
-                <li><strong>Uniform Cost Search</strong></li>
+                <li>
+                    <strong>Uniform Cost Search:</strong> In UCS, Pacman will
+                    consider the value of the spaces it visits where spaces with
+                    dots have a positive value, and spaces with ghosts have a
+                    negative value. UCS will always find the 'cheapest' path or
+                    the path that results in the greatest value.
+                </li>
             </ul>
             <div class="media-container">
                 <img
                     src="assets/AI_UCS1.gif"
-                    alt="Uniform Cost Search Example 1"
+                    alt="Pacman takes longer route to eat dots"
                 />
                 <img
                     src="assets/AI_UCS2.gif"
-                    alt="Uniform Cost Search Example 2"
+                    alt="Pacman avoids ghosts on longer path"
                 />
             </div>
             <ul>
-                <li><strong>A*</strong></li>
+                <li>
+                    <strong>A*/Astar Search:</strong> Pacman will use an
+                    equation called a heuristic defined by me to find an ideal
+                    solution to the goal. It will also consider the costs of
+                    eating a dot or walking into a ghost. A* will not always
+                    find the cheapest path to the goal, but it is faster than
+                    UCS and more likely to find an ideal solution than DFS when
+                    a good heuristic is used.
+                </li>
             </ul>
             <div class="media-container">
                 <img src="assets/AI_Astar1.gif" alt="A* Example 1" />
@@ -538,21 +582,48 @@
             </div>
 
             <h4>2. Multi-Agents</h4>
+            <p>
+                Multi-Agent Systems try to make ideal decisions on what action
+                it should take based on the current state of the world around
+                it. In these examples Pacman will have to eat all of the dots
+                without touching a ghost.
+            </p>
             <ul>
-                <li><strong>Reflex Agent</strong></li>
+                <li>
+                    <strong>Reflex Agent:</strong> A Reflex Agent Pacman will
+                    only look at the current state of the game and will use an
+                    evaluation function defined by me to find which action would
+                    result in the highest value. It does not consider future
+                    game states.
+                </li>
             </ul>
             <div class="media-container">
                 <img src="assets/AI_Reflex1.gif" alt="Reflex Agent 1" />
                 <img src="assets/AI_Reflex2.gif" alt="Reflex Agent 2" />
             </div>
             <ul>
-                <li><strong>Minimax Agent</strong></li>
+                <li>
+                    <strong>Minimax Agent:</strong> A Minimax Agent Pacman will
+                    also consider future game states to try and find the action
+                    that results in the highest value X number of moves down the
+                    line. It will always assume that the enemies (or ghosts)
+                    will choose the action that results in the lowest value for
+                    Pacman.
+                </li>
             </ul>
             <div class="media-container">
                 <img src="assets/AI_Minimax.gif" alt="Minimax Agent" />
             </div>
             <ul>
-                <li><strong>Expectimax Agent</strong></li>
+                <li>
+                    <strong>Expectimax Agent:</strong> An Expectimax Agent
+                    Pacman will work similarly to the Minimax Agent, however,
+                    instead of assuming the ghosts will always make the best
+                    action possible, it will consider the probability that the
+                    ghosts are likely to move in any given direction. This is
+                    ideal when facing enemies that are not programmed to always
+                    make the ideal decision.
+                </li>
             </ul>
             <div class="media-container">
                 <img src="assets/AI_Expectimax1.gif" alt="Expectimax Agent 1" />
@@ -560,6 +631,11 @@
             </div>
 
             <h4>3. Reinforcement Learning</h4>
+            <p>
+                A Reinforcement Learning agent learns to make decisions by
+                interacting with an environment and receiving rewards or
+                penalties for its actions.
+            </p>
             <ul>
                 <li><strong>Value Iteration</strong></li>
             </ul>
