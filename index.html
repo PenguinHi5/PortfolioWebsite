@@ -181,6 +181,14 @@
 				text-decoration: none;
 				font-size: 1.2rem;
 			}
+
+			.media-container img {
+				cursor: zoom-in;
+			}
+
+			.media-container video {
+				cursor: zoom-in;
+			}
 		</style>
 		<script>
 			function toggleSection(id) {
@@ -199,6 +207,42 @@
 						block: 'start'
 					});
 				}
+			}
+			document.addEventListener('DOMContentLoaded', () => {
+				// Image click
+				document.querySelectorAll('.media-container img').forEach(img => {
+					img.addEventListener('click', () => {
+						const lightbox = document.getElementById('lightbox');
+						const lightboxImg = document.getElementById('lightbox-img');
+						const lightboxVideo = document.getElementById('lightbox-video');
+						lightboxImg.src = img.src;
+						lightboxImg.style.display = 'block';
+						lightboxVideo.style.display = 'none';
+						lightbox.style.display = 'flex';
+					});
+				});
+				// Video click
+				document.querySelectorAll('.media-container video').forEach(video => {
+					video.addEventListener('click', () => {
+						const lightbox = document.getElementById('lightbox');
+						const lightboxImg = document.getElementById('lightbox-img');
+						const lightboxVideo = document.getElementById('lightbox-video');
+						lightboxVideo.src = video.currentSrc;
+						lightboxVideo.style.display = 'block';
+						lightboxImg.style.display = 'none';
+						lightbox.style.display = 'flex';
+					});
+				});
+			});
+
+			function closeLightbox() {
+				const lightbox = document.getElementById('lightbox');
+				const lightboxImg = document.getElementById('lightbox-img');
+				const lightboxVideo = document.getElementById('lightbox-video');
+				lightbox.style.display = 'none';
+				lightboxImg.src = '';
+				lightboxVideo.pause();
+				lightboxVideo.src = '';
 			}
 		</script>
 	</head>
@@ -403,6 +447,10 @@
 					<img src="assets/ComputerGraphics_Title.png" alt="Computer Graphics" />
 					<div class="card-title">Computer Graphics</div>
 				</div>
+				<div class="card" onclick="toggleSection('inventory')">
+					<img src="assets/Inventory_Title.png" alt="Inventory" />
+					<div class="card-title">Inventory Management System</div>
+				</div>
 			</div>
 		</section>
 		<div id="ai" class="expanded-section">
@@ -524,11 +572,48 @@
 				<video src="assets/ComputerGraphics_Raytracing.mp4" autoplay muted loop></video>
 			</div>
 		</div>
+		<div id="inventory" class="expanded-section">
+			<h3>DS Parts Inventory Management System</h3>
+			<p> This custom-built inventory management system was developed to efficiently track component quantities across various Nintendo DS console models. It features a MySQL database backend, which I designed and implemented to support scalable and reliable data storage. </p>
+			<div class="media-container">
+				<img src="assets/Inventory_MainPage.png" alt="Inventory Main Interface" />
+			</div>
+			<ul>
+				<li>
+					<strong>Add Items:</strong> Users can seamlessly add new part entries to the database through an intuitive user interface, ensuring data accuracy and ease of input.
+				</li>
+			</ul>
+			<div class="media-container">
+				<img src="assets/Inventory_AddItem.png" alt="Add Item Interface" />
+			</div>
+			<ul>
+				<li>
+					<strong>Edit Items:</strong> All item fields are fully editable using the built-in Edit function, enabling quick adjustments and updates as inventory changes.
+				</li>
+			</ul>
+			<div class="media-container">
+				<img src="assets/Inventory_Edit.png" alt="Edit Item Interface" />
+			</div>
+			<ul>
+				<li>
+					<strong>Advanced Search:</strong> Includes dynamic filtering capabilities that allow users to refine the inventory view by any column for fast and precise lookup.
+				</li>
+			</ul>
+			<div class="media-container">
+				<img src="assets/Inventory_Search.png" alt="Search and Filter" />
+			</div>
+		</div>
 		<section class="contact">
 			<h2>Contact</h2>
 			<p>
 				<a href="mailto:preston.brown@astralwolfstudios.com">preston.brown@astralwolfstudios.com</a>
 			</p>
 		</section>
+		<!-- Lightbox Modal for Images and Videos -->
+		<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000;">
+			<button onclick="closeLightbox(); event.stopPropagation();" style="position:absolute; top:20px; right:30px; background:none; border:none; font-size:2rem; color:#fff; cursor:pointer;">&times;</button>
+			<img id="lightbox-img" src="" alt="Expanded Image" style="max-width:90vw; max-height:90vh; border-radius:8px; display:none;" />
+			<video id="lightbox-video" controls style="max-width:90vw; max-height:90vh; border-radius:8px; display:none;"></video>
+		</div>
 	</body>
 </html>
